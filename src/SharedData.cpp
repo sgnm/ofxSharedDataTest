@@ -7,5 +7,3 @@
 //
 
 #include "SharedData.h"
-
-//SharedData::sharedKinect;

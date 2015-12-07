@@ -4,6 +4,8 @@
 #include "ofxStateMachine.h"
 #include "SharedData.h"
 #include "ofxKinect.h"
+#include "ofxGui.h"
+#include "Singleton.h"
 
 #define OUT_W 854
 #define OUT_H 480
@@ -29,5 +31,8 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     itg::ofxStateMachine<SharedData> stateMachine;
-    ofxKinect *kinect;
+    
+    Singleton &kinect = Singleton::getInstance();
+    
+    ofxPanel gui;
 };

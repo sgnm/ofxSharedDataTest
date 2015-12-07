@@ -13,6 +13,7 @@
 #include "ofxState.h"
 #include "SharedData.h"
 #include "ofxGui.h"
+#include "Singleton.h"
 
 #define OUT_W 854
 #define OUT_H 480
@@ -26,8 +27,6 @@ class PointCloud : public itg::ofxState<SharedData>{
     
     string getName();
     
-    ofxKinect *kinect;
-    
     ofxPanel gui;
     ofxIntSlider near;
     ofxIntSlider far;
@@ -37,6 +36,8 @@ class PointCloud : public itg::ofxState<SharedData>{
     int angle;
     
     ofEasyCam easyCam;
+    
+    Singleton &kinect = Singleton::getInstance();
     
 };
 

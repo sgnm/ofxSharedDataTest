@@ -1,9 +1,12 @@
 #include "ofApp.h"
 #include "PointCloud.h"
 #include "SetTexture.h"
+#include "Singleton.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetVerticalSync(false);
+    ofSetFrameRate(0);
     ofSetLogLevel(OF_LOG_VERBOSE);
     stateMachine.getSharedData().sharedMsg = "hoge";
     stateMachine.addState<PointCloud>();
@@ -16,19 +19,19 @@ void ofApp::setupGUI(){
 }
 //--------------------------------------------------------------
 void ofApp::setupKinect(){
-    kinect = &stateMachine.getSharedData().sharedKinect;
-    kinect->init();
-    kinect->open();
+    kinect.init();
+    kinect.open();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    kinect->update();
+    kinect.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    kinect->draw(0, 0, kinect->width, kinect->height);
+    ofSetWindowTitle(ofToString(ofGetFrameRate(), 0));
+    kinect.draw(0, 0, kinect.width, kinect.height);
 }
 
 //--------------------------------------------------------------

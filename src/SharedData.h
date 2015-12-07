@@ -14,7 +14,6 @@
 class SharedData{
 public:
     string sharedMsg;
-    ofxKinect sharedKinect;
 };
 
 #endif
